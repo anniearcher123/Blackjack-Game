@@ -1,3 +1,4 @@
+//Variables
 const dealButton = document.getElementById('deal-button');
 const hitButton = document.getElementById('hit-button');
 const standButton = document.getElementById('stand-button');
@@ -18,10 +19,12 @@ window.onload = function (){
   shuffleDeck();
 }
 
+//Event Listeners
 dealButton.addEventListener('click', dealCards);
 hitButton.addEventListener('click', hitCards);
 standButton.addEventListener('click', stand);
 
+//Build and shuffle deck
 function buildDeck() {
   const values = ["ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king"];
   const types = ["hearts", "spades", "clubs", "diamonds"];
@@ -45,6 +48,7 @@ function shuffleDeck() {
   console.log(deck);
 }
 
+//Dealing cards and calculating scores
 function dealCards() {
   hidden = deck.pop();
   let hiddenCard = document.createElement('img');
@@ -80,6 +84,8 @@ function dealCards() {
   console.log(playerSum);
 }
 
+
+//Hit button
 function hitCards() {
   if(!canHit) {
     return;
@@ -98,6 +104,8 @@ function hitCards() {
     }
 }
 
+
+//Game end
 function stand() {
   dealerSum = reduceAce(dealerSum, dealerAceCount);
   yourSum = reduceAce(playerSum, playerAceCount);
@@ -127,6 +135,8 @@ function stand() {
   document.getElementById('player-points').innerText = playerSum;
   document.getElementById('results').innerText = message;
 }
+
+//Retrieve card values
 
 
 function getValue(card) {
